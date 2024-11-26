@@ -55,7 +55,7 @@ export default function ZoomParallax() {
         }]
     return (
         <>
-            <div className="h-[50vh]" />
+            <div className="h-[50vh] bg-black" />
             <div ref={container} className={styles.container}>
                 <div className={styles.sticky}>
                     {pictures.map(({ src, scale }, index) => {
