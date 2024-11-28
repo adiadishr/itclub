@@ -1,11 +1,4 @@
 import styles from './styles.module.scss';
-import Picture1 from '../../../public/images/acc.png';
-import Picture2 from '../../../public/images/photo1.jpg';
-import Picture3 from '../../../public/images/photo2.jpg';
-import Picture4 from '../../../public/images/photo3.jpg'
-import Picture5 from '../../../public/images/photo4.jpg'
-import Picture6 from '../../../public/images/photo5.jpg'
-import Picture7 from '../../../public/images/photo6.jpg'
 import Image from 'next/image';
 
 import { useScroll, useTransform, motion } from 'framer-motion';
@@ -26,31 +19,31 @@ export default function ZoomParallax() {
 
     const pictures = [
         {
-            src: Picture1,
+            src: '/images/acc.png',
             scale: scale4
         },
         {
-            src: Picture2,
+            src: '/images/photo1.jpg',
             scale: scale5
         },
         {
-            src: Picture3,
+            src: '/images/photo2.jpg',
             scale: scale6
         },
         {
-            src: Picture4,
+            src: '/images/photo3.jpg',
             scale: scale5
         },
         {
-            src: Picture5,
+            src: '/images/photo4.jpg',
             scale: scale6
         },
         {
-            src: Picture6,
+            src: '/images/photo5.jpg',
             scale: scale8
         },
         {
-            src: Picture7,
+            src: '/images/photo6.jpg',
             scale: scale9
         }]
     return (
@@ -62,7 +55,7 @@ export default function ZoomParallax() {
                         return (
                             <motion.div key={index} style={{ scale }} className={styles.el}>
                                 <div className={styles.imageContainer}>
-                                    <Image src={src} fill alt="image" placeholder='blur' />
+                                    <Image src={`${src}`} fill alt="image" />
                                 </div>
                             </motion.div>
                         )
