@@ -82,13 +82,8 @@ const Features = () => (
     <section className="bg-black pb-52">
         <div className="container mx-auto px-3 md:px-10">
             <div className="px-5 py-32">
-                <p className="font-circular-web text-lg text-blue-50">
-                    Into the Metagame Layer
-                </p>
-                <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-50">
-                    Immerse yourself in a rich and ever-expanding universe where a vibrant
-                    array of products converge into an interconnected overlay experience
-                    on your world.
+                <p className="font-circular-web text-3xl text-white w-8/12 pb-24 leading-[3.5rem]">
+                    Apex Code and Combat 2025 is dual focused event combining coding and gaming, where we plan on hosting both Intercollege and Intra-college gaming competitions as well as an innovative hackathon.
                 </p>
             </div>
 
@@ -100,7 +95,7 @@ const Features = () => (
                             Embracing the best of both worlds
                         </>
                     }
-                    description="A cross-platform metagame app, turning your activities across Web2 and Web3 games into a rewarding adventure."
+                    description="An experience blending gaming and coding, where skills in both worlds turn into a rewarding adventure."
                 />
             </BentoTilt>
 
@@ -110,10 +105,10 @@ const Features = () => (
                         src="videos/feature-9.mp4"
                         title={
                             <>
-                                zig<b>m</b>a
+                                Player Unknown Battle Grounds
                             </>
                         }
-                        description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
+                        description="a battle royale game where players fight to be the last one standing. Up to 100 players parachute onto an island, scavenging for weapons, supplies, and vehicles"
 
                     />
                 </BentoTilt>
@@ -123,10 +118,10 @@ const Features = () => (
                         src="videos/feature-8.mp4"
                         title={
                             <>
-                                {/* n<b>e</b>xus */}
+                                Stumble Guys
                             </>
                         }
-                        description=""
+                        description="A lighthearted, multiplayer knockout game inspired by obstacle course games."
 
                     />
                 </BentoTilt>
@@ -140,7 +135,7 @@ const Features = () => (
                 </BentoTilt>
                 <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
                     <BentoCard
-                        src="videos/feature-4.mp4"
+                        src="videos/feature.mp4"
                         title={
                             <>
                                 {/* az<b>u</b>l */}

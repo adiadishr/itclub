@@ -1,11 +1,11 @@
 import styles from './styles.module.scss';
-import Picture1 from '../../../public/images/1.jpg';
-import Picture2 from '../../../public/images/2.jpg';
-import Picture3 from '../../../public/images/3.jpg';
-import Picture4 from '../../../public/images/1.jpg'
-import Picture5 from '../../../public/images/1.jpg'
-import Picture6 from '../../../public/images/1.jpg'
-import Picture7 from '../../../public/images/1.jpg'
+import Picture1 from '../../../public/images/acc.png';
+import Picture2 from '../../../public/images/photo1.jpg';
+import Picture3 from '../../../public/images/photo2.jpg';
+import Picture4 from '../../../public/images/photo3.jpg'
+import Picture5 from '../../../public/images/photo4.jpg'
+import Picture6 from '../../../public/images/photo5.jpg'
+import Picture7 from '../../../public/images/photo6.jpg'
 import Image from 'next/image';
 
 import { useScroll, useTransform, motion } from 'framer-motion';
@@ -55,7 +55,7 @@ export default function ZoomParallax() {
         }]
     return (
         <>
-            <div className="h-[50vh] bg-white" />
+            <div className="h-[50vh] bg-black" />
             <div ref={container} className={styles.container}>
                 <div className={styles.sticky}>
                     {pictures.map(({ src, scale }, index) => {
@@ -69,7 +69,7 @@ export default function ZoomParallax() {
                     })}
                 </div>
             </div>
-            <div className="h-[50vh] bg-gradient-to-b from-gray-950 to-black" />
+            <div className="h-[50vh] bg-gradient-to-b from-violet-950 brightness-[0.25] to-black" />
         </>
     )
 }

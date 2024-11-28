@@ -2,73 +2,80 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import Image from 'next/image'
-import { GlitchEffect } from './glitch-effect'
-import { Description } from './description'
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 const sections = [
-    { title: 'PubG', image: '/images/1.png' },
-    { title: 'Stumble Guys', image: '/images/2.png' },
-    { title: 'Ideathon', image: '/images/3.png' },
+    {
+        id: 1,
+        title: "Stumble Guys",
+        image: "/images/2.png",
+        content: "Explore the beauty of nature with our guided tours through lush forests, majestic mountains, and serene lakes. Our experienced guides will help you discover hidden gems and learn about local flora and fauna."
+    },
+    {
+        id: 2,
+        title: "Hackathon",
+        image: "/images/1.png",
+        content: "Dive into the world of cutting-edge technology. From artificial intelligence to quantum computing, we'll explore the latest innovations that are shaping our future and revolutionizing industries across the globe."
+    },
+    {
+        id: 3,
+        title: "PUBG",
+        image: "/images/3.png",
+        content: "Immerse yourself in the vibrant world of art. Discover masterpieces from renowned artists, explore various art movements, and learn about different techniques used in painting, sculpture, and digital art."
+    }
 ]
 
-export function AnimatedSections() {
-    const [expandedIndex, setExpandedIndex] = useState(null)
-    const [showDescription, setShowDescription] = useState(false)
-
-    const handleClick = (index) => {
-        if (expandedIndex === null) {
-            setExpandedIndex(index)
-            setTimeout(() => {
-                setShowDescription(true)
-            }, 500)
-        } else {
-            setShowDescription(false)
-            setExpandedIndex(null)
-        }
-    }
+export default function ExpandableSections() {
+    const [openSheet, setOpenSheet] = useState(null)
+    const [hoveredSection, setHoveredSection] = useState(null)
 
     return (
-        <div className="flex h-screen w-full overflow-hidden">
-            {sections.map((section, index) => (
+        <div className="flex h-screen">
+            {sections.map((section) => (
                 <motion.div
-                    key={section.title}
-                    className="relative flex-1 cursor-pointer overflow-hidden"
+                    key={section.id}
+                    className="relative flex-1 flex items-center justify-center cursor-pointer overflow-hidden"
                     animate={{
-                        flex: expandedIndex === index ? 3 : expandedIndex === null ? 1 : 0.1,
+                        flex: hoveredSection === section.id ? 1.5 : 1
                     }}
-                    transition={{ duration: 0.5 }}
-                    onClick={() => handleClick(index)}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    onHoverStart={() => setHoveredSection(section.id)}
+                    onHoverEnd={() => setHoveredSection(null)}
+                    onClick={() => setOpenSheet(section.id)}
+                    style={{
+                        backgroundImage: `url(${section.image})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }}
                 >
-                    <Image
-                        src={section.image}
-                        alt={section.title}
-                        layout="fill"
-                        objectFit="cover"
-                        className="transition-all duration-300 filter brightness-75 saturate-50 hover:brightness-100 hover:saturate-100"
-                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-50" />
+                    <motion.h2
+                        className="text-white text-3xl font-bold z-10 text-center px-4"
+                        animate={{
+                            scale: hoveredSection === section.id ? 1.1 : 1
+                        }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                    >
+                        {section.title}
+                    </motion.h2>
+
                     <AnimatePresence>
-                        {expandedIndex === null && (
-                            <motion.h2
-                                className="absolute inset-0 flex items-center justify-center text-4xl font-bold text-white"
-                                initial={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 0.5 }}
-                            >
-                                {section.title.split('').map((char, charIndex) => (
-                                    <motion.span
-                                        key={charIndex}
-                                        initial={{ y: 0 }}
-                                        exit={{ y: -50, opacity: 0 }}
-                                        transition={{ duration: 0.5, delay: charIndex * 0.05 }}
-                                    >
-                                        {char}
-                                    </motion.span>
-                                ))}
-                            </motion.h2>
+                        {openSheet === section.id && (
+                            <Sheet open={openSheet === section.id} onOpenChange={(open) => setOpenSheet(open ? section.id : null)}>
+                                <SheetContent side="bottom" className="h-[80vh] sm:h-[70vh] w-full">
+                                    <SheetHeader>
+                                        <SheetTitle>{section.title}</SheetTitle>
+                                    </SheetHeader>
+                                    <ScrollArea className="h-[calc(100%-4rem)] mt-6 rounded-md">
+                                        <SheetDescription>
+                                            {section.content}
+                                        </SheetDescription>
+                                    </ScrollArea>
+                                </SheetContent>
+                            </Sheet>
                         )}
                     </AnimatePresence>
-                    {expandedIndex === index && showDescription && <Description title={section.title} />}
                 </motion.div>
             ))}
         </div>

@@ -15,7 +15,7 @@ export default function TextParallax() {
     })
 
     return (
-        <main className="overflow-hidden bg-sky-500 text-white">
+        <main className="overflow-hidden bg-sky-700 text-white">
             <div className='h-[35vh] rounded-t-[2rem]' />
             <div className='' ref={container}>
                 <Slide src={Picture1} direction={'left'} left={"-40%"} progress={scrollYProgress} />

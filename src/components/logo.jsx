@@ -17,7 +17,7 @@ export default function Logo() {
     const opacity = useTransform(scrollYProgress, [0, 1], [0, 0.7])
 
     return (
-        <div ref={container} className='relative h-screen overflow-hidden'>
+        <div ref={container} className='relative h-screen overflow-hidden bg-white'>
             <motion.div
                 style={{
                     y: backgroundY,
