@@ -1,5 +1,6 @@
 'use client'
 
+import { AnimatedSections } from '@/components/animated-sections'
 import Features from '@/components/features'
 import Logo from '@/components/logo'
 import TextParallax from '@/components/text-parallax'
@@ -21,11 +22,12 @@ export default function Home() {
   }, [])
 
   return (
-    <>
+    <main className='relative'>
       <Logo />
       <TextParallax />
       <ZoomParallax />
       <Features />
-    </>
+      <AnimatedSections />
+    </main>
   )
 }

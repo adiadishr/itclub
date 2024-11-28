@@ -16,13 +16,13 @@ export default function TextParallax() {
 
     return (
         <main className="overflow-hidden bg-sky-500 text-white">
-            <div className='h-[50vh] rounded-t-[2rem]' />
+            <div className='h-[35vh] rounded-t-[2rem]' />
             <div className='' ref={container}>
                 <Slide src={Picture1} direction={'left'} left={"-40%"} progress={scrollYProgress} />
                 <Slide src={Picture2} direction={'right'} left={"-25%"} progress={scrollYProgress} />
                 <Slide src={Picture3} direction={'left'} left={"-30%"} progress={scrollYProgress} />
             </div>
-            <div className='h-[50vh]' />
+            <div className='h-[35vh]' />
         </main>
     )
 }
